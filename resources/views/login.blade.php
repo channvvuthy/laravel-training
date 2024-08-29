@@ -78,10 +78,12 @@
         <form class="login-form" method="POST" action="/login">
             @csrf
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="text" id="email" name="email">
+            <div style="color:red;">{{ $errors->first('email') }}</div>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password">
+             <div style="color:red;">{{ $errors->first('password') }}</div>
 
             <button type="submit">Login</button>
         </form>

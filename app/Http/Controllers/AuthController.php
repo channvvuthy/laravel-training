@@ -15,8 +15,10 @@ class AuthController extends Controller
 
 
     public function loginUser(Request $request){
-        $credentials = $request->except(["_token"]);
-
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:10'
+        ]);
 
         if(auth()->attempt($credentials)){
             // Find information of user and create session id to cookie on the browser
@@ -28,14 +30,20 @@ class AuthController extends Controller
 
 
     public function showRegisterForm(){
-        $data["title"] = "Ligin form"; 
-        return view("register",$data);
+        return view("register");
     }
 
     public function registerUser(Request $request){
-        // $data = $request->all();
-        $data = $request->except(["_token"]);
-        return User::create($data);
+     
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|max:10'
+        ]);
+        
+        User::create($data);
+
+        return redirect()->route("login");
     }
 
     public function protectedResource(){

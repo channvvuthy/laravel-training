@@ -86,13 +86,16 @@
         <form method="POST" action="/register">
             @csrf
             <label for="full-name">Full Name</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name">
+            <div style="color:red;">{{ $errors->first('name') }}</div>
             
             <label for="register-email">Email</label>
-            <input type="email" id="register-email" name="email" required>
+            <input type="email" id="register-email" name="email">
+            <div style="color:red;">{{ $errors->first('email') }}</div>
             
             <label for="register-password">Password</label>
-            <input type="password" id="register-password" name="password" required>
+            <input type="password" id="register-password" name="password">
+            <div style="color:red;">{{ $errors->first('password') }}</div>
             
             <button type="submit">Register</button>
         </form>
