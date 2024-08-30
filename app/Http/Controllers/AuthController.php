@@ -66,6 +66,25 @@ class AuthController extends Controller
         return "editor data";
     }
 
+    public function showUpdateProfile(){
+        return view("update-profile");
+    }
+
+    public function updatProfile(Request $request){
+        $file = $request->file("photo");
+        // Generate a unique filename to prevent overwriting
+        $filename = time() . '_' . $file->getClientOriginalName();
+       
+
+        // Move the file to the public directory
+        $file->move(public_path('uploads'), $filename);
+
+        // Or use Storage facade with public disk
+        // $filePath = $file->storeAs('uploads', $filename, 'public');
+
+        return back()->with('success', 'File uploaded successfully!');
+    }
+
 
 
 

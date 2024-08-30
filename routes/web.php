@@ -25,6 +25,9 @@ Route::get("admin",[AuthController::class, "admin"])->middleware(["auth", IsAdmi
 Route::get("author",[AuthController::class, "author"]);
 Route::get("editor",[AuthController::class, "editor"]);
 Route::get("logout",[AuthController::class, "logout"]);
+Route::get("update-profile",[AuthController::class, "showUpdateProfile"]);
+Route::post("update-profile",[AuthController::class, "updatProfile"])->name("updateProfile");
+
 
 
 

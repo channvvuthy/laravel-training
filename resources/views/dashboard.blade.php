@@ -111,8 +111,9 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>{{auth()->user()->email}}</h2>
+        <h2>{{auth()->user()->name}}</h2>
         <ul>
+            <li><a href="/update-profile">Update Profile</a></li>
             <li><a href="/admin">Admin</a></li>
             <li><a href="#">Author</a></li>
             <li><a href="#">Editor</a></li>
